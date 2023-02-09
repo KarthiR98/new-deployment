@@ -4,8 +4,11 @@ FROM openjdk:14-jdk-alpine
 # Set the working directory in the container to /app
 WORKDIR /app
 
-# Copy the compiled JAR file from the host to the container
-COPY target/my-app.jar /app/my-app.jar
+# Copy the Java file from the host to the container
+COPY HelloWorld.java /app/HelloWorld.java
 
-# Run the JAR file when the container starts
-CMD ["java", "-jar", "my-app.jar"]
+# Compile the Java file
+RUN javac HelloWorld.java
+
+# Run the program when the container starts
+CMD ["java", "HelloWorld"]
